@@ -427,9 +427,9 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                                 dataSetIndex: dataSetIndex,
                                 viewPortHandler: viewPortHandler),
                             xPos: x,
-                            yPos: val > 0.0
+                            yPos: val > dataProvider.minValueForDrawingInsideBar
                                 ? (rect.origin.y + posOffset)
-                                : (rect.origin.y + rect.size.height + negOffset),
+                                : (rect.origin.y - rect.size.height),
                             font: valueFont,
                             align: .center,
                             color: dataSet.valueTextColorAt(j))

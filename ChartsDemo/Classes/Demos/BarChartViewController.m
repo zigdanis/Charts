@@ -13,6 +13,21 @@
 #import "ChartsDemo-Swift.h"
 #import "DayAxisValueFormatter.h"
 
+@interface XAxisValuesFormatter : NSObject<IChartValueFormatter>
+    
+@end
+
+@implementation XAxisValuesFormatter
+    
+- (NSString *)stringForValue:(double)value entry:(ChartDataEntry *)entry dataSetIndex:(NSInteger)dataSetIndex viewPortHandler:(ChartViewPortHandler *)viewPortHandler {
+
+    NSString *str = [NSString stringWithFormat:@"%.1f♥️\n3👥", value];
+    return str;
+}
+    
+    
+@end
+
 @interface BarChartViewController () <ChartViewDelegate>
 
 @property (nonatomic, strong) IBOutlet BarChartView *chartView;
@@ -50,7 +65,7 @@
     
     _chartView.drawBarShadowEnabled = NO;
     _chartView.drawValueAboveBarEnabled = NO;
-    
+    _chartView.minValueForDrawingInsideBar = 1;
     _chartView.maxVisibleCount = 60;
     
     ChartXAxis *xAxis = _chartView.xAxis;
@@ -136,7 +151,7 @@
     {
         double mult = (range + 1);
         BOOL isMultipleOf2 = arc4random_uniform(mult) % 2 == 0;
-        double val = (double) isMultipleOf2 ? 10 : 0;
+        double val = (double) isMultipleOf2 ? 10 : 0.9;
         
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:(double)i y:val]];
     }
@@ -159,7 +174,8 @@
         
         BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
         [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
-        
+        XAxisValuesFormatter *formatter = [[XAxisValuesFormatter alloc] init];
+        [data setValueFormatter:formatter];
         data.barWidth = 0.9f;
         
         _chartView.data = data;
@@ -194,3 +210,4 @@
 }
 
 @end
+
