@@ -66,6 +66,8 @@
     _chartView.drawBarShadowEnabled = NO;
     _chartView.drawValueAboveBarEnabled = NO;
     _chartView.minValueForDrawingInsideBar = 1;
+    _chartView.numberOfValueTextLines = 2;
+    
     _chartView.maxVisibleCount = 60;
     
     ChartXAxis *xAxis = _chartView.xAxis;
@@ -151,7 +153,7 @@
     {
         double mult = (range + 1);
         BOOL isMultipleOf2 = arc4random_uniform(mult) % 2 == 0;
-        double val = (double) isMultipleOf2 ? 10 : 0.9;
+        double val = (double) isMultipleOf2 ? 10 : 0.3;
         
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:(double)i y:val]];
     }

@@ -177,6 +177,8 @@ open class CombinedChartView: BarLineChartViewBase, CombinedChartDataProvider
     
     open var minValueForDrawingInsideBar: Double { return 0.0 }
     
+    open var numberOfValueTextLines: Int { return 1 }
+    
     /// - returns: `true` if drawing shadows (maxvalue) for each bar is enabled, `false` ifnot
     open var isDrawBarShadowEnabled: Bool { return (renderer as! CombinedChartRenderer!).drawBarShadowEnabled }
     

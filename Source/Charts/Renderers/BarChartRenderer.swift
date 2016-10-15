@@ -377,7 +377,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 
                 // calculate the correct offset depending on the draw position of the value
                 let valueFont = dataSet.valueFont
-                let valueTextHeight = valueFont.lineHeight
+                let valueTextHeight = valueFont.lineHeight * (CGFloat)(dataProvider.numberOfValueTextLines)
                 posOffset = (drawValueAboveBar ? -(valueTextHeight + valueOffsetPlus) : valueOffsetPlus)
                 negOffset = (drawValueAboveBar ? valueOffsetPlus : -(valueTextHeight + valueOffsetPlus))
                 
@@ -429,7 +429,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                             xPos: x,
                             yPos: val > dataProvider.minValueForDrawingInsideBar
                                 ? (rect.origin.y + posOffset)
-                                : (rect.origin.y - rect.size.height),
+                                : (rect.origin.y - valueTextHeight - posOffset),
                             font: valueFont,
                             align: .center,
                             color: dataSet.valueTextColorAt(j))

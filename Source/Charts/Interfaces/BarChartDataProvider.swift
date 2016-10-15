@@ -21,4 +21,5 @@ public protocol BarChartDataProvider: BarLineScatterCandleBubbleChartDataProvide
     var isDrawValueAboveBarEnabled: Bool { get }
     var isHighlightFullBarEnabled: Bool { get }
     var minValueForDrawingInsideBar: Double { get }
+    var numberOfValueTextLines: Int { get }
 }

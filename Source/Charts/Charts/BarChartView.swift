@@ -140,6 +140,8 @@ open class BarChartView: BarLineChartViewBase, BarChartDataProvider
     /// minimum value below which BarChart will not draw balue string inside bar (for positive values)
     open var minValueForDrawingInsideBar: Double = 0.0
     
+    open var numberOfValueTextLines: Int = 1
+    
     /// if set to true, a grey area is drawn behind each bar that indicates the maximum value
     open var drawBarShadowEnabled: Bool
     {
