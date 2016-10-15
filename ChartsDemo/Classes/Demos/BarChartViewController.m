@@ -49,7 +49,7 @@
     _chartView.delegate = self;
     
     _chartView.drawBarShadowEnabled = NO;
-    _chartView.drawValueAboveBarEnabled = YES;
+    _chartView.drawValueAboveBarEnabled = NO;
     
     _chartView.maxVisibleCount = 60;
     
@@ -135,7 +135,9 @@
     for (int i = start; i < start + count + 1; i++)
     {
         double mult = (range + 1);
-        double val = (double) (arc4random_uniform(mult));
+        BOOL isMultipleOf2 = arc4random_uniform(mult) % 2 == 0;
+        double val = (double) isMultipleOf2 ? 10 : 0;
+        
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:(double)i y:val]];
     }
     

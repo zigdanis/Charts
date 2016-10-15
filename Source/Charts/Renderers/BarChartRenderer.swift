@@ -427,7 +427,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                                 dataSetIndex: dataSetIndex,
                                 viewPortHandler: viewPortHandler),
                             xPos: x,
-                            yPos: val >= 0.0
+                            yPos: val > 0.0
                                 ? (rect.origin.y + posOffset)
                                 : (rect.origin.y + rect.size.height + negOffset),
                             font: valueFont,
