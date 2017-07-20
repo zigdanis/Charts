@@ -48,6 +48,7 @@
     
     self.options = @[
                      @{@"key": @"toggleValues", @"label": @"Toggle Values"},
+                     @{@"key": @"toggleIcons", @"label": @"Toggle Icons"},
                      @{@"key": @"toggleHighlight", @"label": @"Toggle Highlight"},
                      @{@"key": @"animateX", @"label": @"Animate X"},
                      @{@"key": @"animateY", @"label": @"Animate Y"},
@@ -145,13 +146,14 @@
 
 - (void)setDataCount:(int)count range:(double)range
 {
-    double start = 0.0;
+    double start = 1.0;
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
     for (int i = start; i < start + count + 1; i++)
     {
         double mult = (range + 1);
+
         BOOL isMultipleOf2 = arc4random_uniform(mult) % 2 == 0;
         double val = (double) isMultipleOf2 ? 10 : 0.3;
         
@@ -170,6 +172,7 @@
     {
         set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
         [set1 setColors:ChartColorTemplates.material];
+        set1.drawIconsEnabled = NO;
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
